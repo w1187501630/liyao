@@ -12,7 +12,7 @@
 #include<iostream>
 #pragma comment(lib, "wsock32")
 
-
+//test on local
 #define num_subthread 1
 #define num_sendthread 1
 
