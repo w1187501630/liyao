@@ -2,7 +2,7 @@
 #ifndef WRITE2SQL
 #define WRITE2SQL
 /*SQLINTEGER num1, age1;
-// ConsoleApplication1.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£*/
+// ConsoleApplication1.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚*/
 #include "data_structure.h"
 #include <stdio.h>    
 #include <string.h>
@@ -19,42 +19,42 @@
 using namespace std;
 #pragma warning( disable : 4996)
 #define MAXSTRSIZE 1024
-
+//TEST ON Github
 //SQLINTEGER num1, age1;
 //SQLCHAR frameID[20];
 char entity[255];
 char exm[1024];/*
 			   struct worker
 			   {
-			   char sno[255];//¹¤ºÅ
-			   unsigned char sname[255];//ĞÕÃû
-			   char sex[255];//ĞÔ±ğ
-			   char bdate[255];//ÄêÁä
-			   char dept[255];//×¨Òµ
-			   unsigned short classno;//°à¼¶
+			   char sno[255];//å·¥å·
+			   unsigned char sname[255];//å§“å
+			   char sex[255];//æ€§åˆ«
+			   char bdate[255];//å¹´é¾„
+			   char dept[255];//ä¸“ä¸š
+			   unsigned short classno;//ç­çº§
 			   };
 struct msg
 {
-	char frameID[5];	//Ö¡±êÊ¶5.29È¡Ïûunsigned
-	unsigned short frameLength;	//Ö¡³¤¶È
-	unsigned short ManuName;	//³§ÉÌ±êÊ¶
-	char Ver;					//Ğ­Òé°æ±¾ºÅ
+	char frameID[5];	//å¸§æ ‡è¯†5.29å–æ¶ˆunsigned
+	unsigned short frameLength;	//å¸§é•¿åº¦
+	unsigned short ManuName;	//å‚å•†æ ‡è¯†
+	char Ver;					//åè®®ç‰ˆæœ¬å·
 	//	unsigned
-	char AK[32];				//ÔÚ°Ù¶È¿ª·ÅÆ½Ì¨ÉêÇëµÄ access key
-	unsigned long ServiceID;	//·şÎñID
+	char AK[32];				//åœ¨ç™¾åº¦å¼€æ”¾å¹³å°ç”³è¯·çš„ access key
+	unsigned long ServiceID;	//æœåŠ¡ID
 	//unsigned
-unsigned char EntityLength;	//ÖÕ¶Ë±êÊ¶·û³¤¶È
-char* EntityName;			//ÖÕ¶Ë±êÊ¶·û
-int Longitude;				//¾­¶È
-int Latitude;				//Î³¶È
-char Coordinate[1];			//×ø±êÀàĞÍ
-unsigned short Velocity;	//ËÙ¶È
-char Direction[1];			//·½Ïò
-unsigned int Time;			//Ê±¼ä//5.29È¡Ïûunsign
-unsigned short CityID;		//³ÇÊĞ±àºÅ
-unsigned char Passenger;	//ÔØ¿Í
-unsigned short ExMsgLength;	//À©Õ¹ĞÅÏ¢³¤¶È
-char* ExMsg;				//À©Õ¹ĞÅÏ¢*/
+unsigned char EntityLength;	//ç»ˆç«¯æ ‡è¯†ç¬¦é•¿åº¦
+char* EntityName;			//ç»ˆç«¯æ ‡è¯†ç¬¦
+int Longitude;				//ç»åº¦
+int Latitude;				//çº¬åº¦
+char Coordinate[1];			//åæ ‡ç±»å‹
+unsigned short Velocity;	//é€Ÿåº¦
+char Direction[1];			//æ–¹å‘
+unsigned int Time;			//æ—¶é—´//5.29å–æ¶ˆunsign
+unsigned short CityID;		//åŸå¸‚ç¼–å·
+unsigned char Passenger;	//è½½å®¢
+unsigned short ExMsgLength;	//æ‰©å±•ä¿¡æ¯é•¿åº¦
+char* ExMsg;				//æ‰©å±•ä¿¡æ¯*/
 //};*/
 //msg msg2;*/
 void workertianjiashuju(Message ms)
@@ -64,75 +64,75 @@ void workertianjiashuju(Message ms)
 	SQLHDBC hdbc;//SQLHANDLE hdbc 
 	SQLHSTMT hstmt;//SQLHANDLE hstmt 
 
-	ret = SQLAllocHandle(SQL_HANDLE_ENV, NULL, &henv);//ÉêÇë»·¾³¾ä±ú 
-	ret = SQLSetEnvAttr(henv, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, SQL_IS_INTEGER);//ÉèÖÃ»·¾³ÊôĞÔ 
-	ret = SQLAllocHandle(SQL_HANDLE_DBC, henv, &hdbc);//ÉêÇëÊı¾İ¿âÁ¬½Ó¾ä±ú 
-	ret = SQLConnect(hdbc, (SQLCHAR*)"local1", SQL_NTS, (SQLCHAR*)"sa", SQL_NTS, (SQLCHAR*)"123", SQL_NTS);//Á¬½ÓÊı¾İ¿â 
+	ret = SQLAllocHandle(SQL_HANDLE_ENV, NULL, &henv);//ç”³è¯·ç¯å¢ƒå¥æŸ„ 
+	ret = SQLSetEnvAttr(henv, SQL_ATTR_ODBC_VERSION, (SQLPOINTER)SQL_OV_ODBC3, SQL_IS_INTEGER);//è®¾ç½®ç¯å¢ƒå±æ€§ 
+	ret = SQLAllocHandle(SQL_HANDLE_DBC, henv, &hdbc);//ç”³è¯·æ•°æ®åº“è¿æ¥å¥æŸ„ 
+	ret = SQLConnect(hdbc, (SQLCHAR*)"local1", SQL_NTS, (SQLCHAR*)"sa", SQL_NTS, (SQLCHAR*)"123", SQL_NTS);//è¿æ¥æ•°æ®åº“ 
 	if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
-		cout << "Êı¾İ¿âÁ¬½Ó³É¹¦" << endl;
-		ret = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);//ÉêÇëSQLÓï¾ä¾ä±ú 
-		SQLCHAR sql[] = "INSERT INTO car_copy VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";//SQL²Ù×÷Óï¾ä
-		//SQLCHAR sql[] = "INSERT INTO student_copy VALUES (?,?,?,?,?,?);";//SQL²Ù×÷Óï¾ä
+		cout << "æ•°æ®åº“è¿æ¥æˆåŠŸ" << endl;
+		ret = SQLAllocHandle(SQL_HANDLE_STMT, hdbc, &hstmt);//ç”³è¯·SQLè¯­å¥å¥æŸ„ 
+		SQLCHAR sql[] = "INSERT INTO car_copy VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";//SQLæ“ä½œè¯­å¥
+		//SQLCHAR sql[] = "INSERT INTO student_copy VALUES (?,?,?,?,?,?);";//SQLæ“ä½œè¯­å¥
 		SQLLEN P = SQL_NTS;
 		ret = SQLPrepare(hstmt, sql, SQL_NTS);
-		/*ret = SQLBindParameter(hstmt, 1, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//°ó¶¨²ÎÊı
-		ret = SQLBindParameter(hstmt, 2, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//°ó¶¨²ÎÊı
-		ret = SQLBindParameter(hstmt, 3, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//°ó¶¨²ÎÊı
-		ret = SQLBindParameter(hstmt, 4, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//°ó¶¨²ÎÊı
+		/*ret = SQLBindParameter(hstmt, 1, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//ç»‘å®šå‚æ•°
+		ret = SQLBindParameter(hstmt, 2, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//ç»‘å®šå‚æ•°
+		ret = SQLBindParameter(hstmt, 3, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//ç»‘å®šå‚æ•°
+		ret = SQLBindParameter(hstmt, 4, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);//ç»‘å®šå‚æ•°
 		ret = SQLBindParameter(hstmt, 5, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, &a, 255, &P);
 		ret = SQLBindParameter(hstmt, 6, SQL_PARAM_INPUT, SQL_C_SHORT, SQL_SMALLINT,0 , 0, &wo.sno, 0, &P);//*/
-		ret = SQLBindParameter(hstmt, 1, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 20, 0, &ms.frameID, 20, &P);//°ó¶¨Ö¡±êÊ¶²ÎÊı
-		ret = SQLBindParameter(hstmt, 2, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.frameLength, 0, &P);//°ó¶¨Ö¡³¤²ÎÊı
-		ret = SQLBindParameter(hstmt, 3, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.ManuName, 0, &P);//°ó¶¨³§ÉÌ±êÊ¶²ÎÊı 
-		ret = SQLBindParameter(hstmt, 4, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 255, 0, &ms.Ver, 255, &P);//°ó¶¨Ğ­Òé°æ±¾ºÅ²ÎÊı
-		ret = SQLBindParameter(hstmt, 5, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, ms.AK, 255, &P);//°ó¶¨access key²ÎÊı 
-		ret = SQLBindParameter(hstmt, 6, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 32, 0, &ms.ServiceID, 32, &P);//°ó¶¨ServiceId²ÎÊı
-		ret = SQLBindParameter(hstmt, 7, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 20, 0, &ms.EntityLength, 20, &P);//°ó¶¨Ö¡±êÊ¶²ÎÊı
+		ret = SQLBindParameter(hstmt, 1, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 20, 0, &ms.frameID, 20, &P);//ç»‘å®šå¸§æ ‡è¯†å‚æ•°
+		ret = SQLBindParameter(hstmt, 2, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.frameLength, 0, &P);//ç»‘å®šå¸§é•¿å‚æ•°
+		ret = SQLBindParameter(hstmt, 3, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.ManuName, 0, &P);//ç»‘å®šå‚å•†æ ‡è¯†å‚æ•° 
+		ret = SQLBindParameter(hstmt, 4, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 255, 0, &ms.Ver, 255, &P);//ç»‘å®šåè®®ç‰ˆæœ¬å·å‚æ•°
+		ret = SQLBindParameter(hstmt, 5, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, ms.AK, 255, &P);//ç»‘å®šaccess keyå‚æ•° 
+		ret = SQLBindParameter(hstmt, 6, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 32, 0, &ms.ServiceID, 32, &P);//ç»‘å®šServiceIdå‚æ•°
+		ret = SQLBindParameter(hstmt, 7, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 20, 0, &ms.EntityLength, 20, &P);//ç»‘å®šå¸§æ ‡è¯†å‚æ•°
 		//cout << "memcpy1zhiqian" << endl;
 		memmove(entity, ms.EntityName, 255);
-		//cout << "À©Õ¹ĞÅÏ¢1" << entity << endl;
+		//cout << "æ‰©å±•ä¿¡æ¯1" << entity << endl;
 		free(ms.EntityName);
 		//cout << "memcpy1zhiqian" << endl;
-		ret = SQLBindParameter(hstmt, 8, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, entity, 255, &P);//°ó¶¨ÖÕ¶Ë±êÊ¶·û²ÎÊı
+		ret = SQLBindParameter(hstmt, 8, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 255, 0, entity, 255, &P);//ç»‘å®šç»ˆç«¯æ ‡è¯†ç¬¦å‚æ•°
 		//cout << "memcpy1zhiqian" << endl;
-		ret = SQLBindParameter(hstmt, 9, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 0, 0, &ms.Longitude, 0, &P);//°ó¶¨¾­¶È²ÎÊı 
-		ret = SQLBindParameter(hstmt, 10, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 0, 0, &ms.Latitude, 0, &P);//°ó¶¨Î³¶È²ÎÊı
-		ret = SQLBindParameter(hstmt, 11, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 10, 0, &ms.Coordinate, 10, &P);//°ó¶¨×ø±êÀàĞÍ²ÎÊı
-		ret = SQLBindParameter(hstmt, 12, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.Velocity, 0, &P);//°ó¶¨ËÙ¶È²ÎÊı
-		ret = SQLBindParameter(hstmt, 13, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 1, 0, &ms.Direction, 1, &P);//°ó¶¨·½Ïò²ÎÊı 
-		ret = SQLBindParameter(hstmt, 14, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 0, 0, &ms.Time, 0, &P);//°ó¶¨Ê±¼ä²ÎÊı
-		ret = SQLBindParameter(hstmt, 15, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.CityID, 0, &P);//°ó¶¨³ÇÊĞ±àºÅ²ÎÊı 
-		ret = SQLBindParameter(hstmt, 16, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 20, 0, &ms.Passenger, 20, &P);//°ó¶¨ÔØ¿Í²ÎÊı
-		ret = SQLBindParameter(hstmt, 17, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.ExMsgLength, 0, &P);//°ó¶¨À©Õ¹ĞÅÏ¢³¤¶È²ÎÊı
+		ret = SQLBindParameter(hstmt, 9, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 0, 0, &ms.Longitude, 0, &P);//ç»‘å®šç»åº¦å‚æ•° 
+		ret = SQLBindParameter(hstmt, 10, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 0, 0, &ms.Latitude, 0, &P);//ç»‘å®šçº¬åº¦å‚æ•°
+		ret = SQLBindParameter(hstmt, 11, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 10, 0, &ms.Coordinate, 10, &P);//ç»‘å®šåæ ‡ç±»å‹å‚æ•°
+		ret = SQLBindParameter(hstmt, 12, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.Velocity, 0, &P);//ç»‘å®šé€Ÿåº¦å‚æ•°
+		ret = SQLBindParameter(hstmt, 13, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 1, 0, &ms.Direction, 1, &P);//ç»‘å®šæ–¹å‘å‚æ•° 
+		ret = SQLBindParameter(hstmt, 14, SQL_PARAM_INPUT, SQL_C_LONG, SQL_INTEGER, 0, 0, &ms.Time, 0, &P);//ç»‘å®šæ—¶é—´å‚æ•°
+		ret = SQLBindParameter(hstmt, 15, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.CityID, 0, &P);//ç»‘å®šåŸå¸‚ç¼–å·å‚æ•° 
+		ret = SQLBindParameter(hstmt, 16, SQL_PARAM_INPUT, SQL_C_BIT, SQL_BIT, 20, 0, &ms.Passenger, 20, &P);//ç»‘å®šè½½å®¢å‚æ•°
+		ret = SQLBindParameter(hstmt, 17, SQL_PARAM_INPUT, SQL_C_SSHORT, SQL_SMALLINT, 0, 0, &ms.ExMsgLength, 0, &P);//ç»‘å®šæ‰©å±•ä¿¡æ¯é•¿åº¦å‚æ•°
 		//cout << "memcpy2zhiqian" << endl;
 		memmove(exm, ms.ExMsg, 1024);
-		//cout << "À©Õ¹ĞÅÏ¢2" << exm << endl;
+		//cout << "æ‰©å±•ä¿¡æ¯2" << exm << endl;
 		free(ms.ExMsg);
-		ret = SQLBindParameter(hstmt, 18, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 1024, 0, exm, 1024, &P);//°ó¶¨À©Õ¹ĞÅÏ¢²ÎÊı
-		ret = SQLExecute(hstmt);//Ö±½ÓÖ´ĞĞSQLÓï¾ä 
-		//cout << "zhixingwanzhiqiandadadada´ó´ó´ó" << endl;
+		ret = SQLBindParameter(hstmt, 18, SQL_PARAM_INPUT, SQL_C_CHAR, SQL_CHAR, 1024, 0, exm, 1024, &P);//ç»‘å®šæ‰©å±•ä¿¡æ¯å‚æ•°
+		ret = SQLExecute(hstmt);//ç›´æ¥æ‰§è¡ŒSQLè¯­å¥ 
+		//cout << "zhixingwanzhiqiandadadadaå¤§å¤§å¤§" << endl;
 		if (ret == SQL_ERROR) {
-			cout << "Êı¾İ¿â´íÎó" << endl;
+			cout << "æ•°æ®åº“é”™è¯¯" << endl;
 			system("pause");
 		}
 		if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
 
-			/*****************²âÊÔ½á¹¹ÌåÊı×é********************/
-			cout << ">>>>>>>>>>>>>>ÍùÊı¾İ¿âÌí¼ÓĞÅÏ¢³É¹¦" << endl;
+			/*****************æµ‹è¯•ç»“æ„ä½“æ•°ç»„********************/
+			cout << ">>>>>>>>>>>>>>å¾€æ•°æ®åº“æ·»åŠ ä¿¡æ¯æˆåŠŸ" << endl;
 
-			SQLFreeHandle(SQL_HANDLE_STMT, hstmt);//ÊÍ·ÅÓï¾ä¾ä±ú 
+			SQLFreeHandle(SQL_HANDLE_STMT, hstmt);//é‡Šæ”¾è¯­å¥å¥æŸ„ 
 		}
-		else printf("Ìí¼ÓÊı¾İ¿â²Ù×÷Ê§°Ü£¡\n");
-		SQLDisconnect(hdbc);//¶Ï¿ªÓëÊı¾İ¿âµÄÁ¬½Ó 
+		else printf("æ·»åŠ æ•°æ®åº“æ“ä½œå¤±è´¥ï¼\n");
+		SQLDisconnect(hdbc);//æ–­å¼€ä¸æ•°æ®åº“çš„è¿æ¥ 
 	}
 	else
 	{
-		printf("Á¬½ÓÊı¾İ¿âÊ§°Ü!\n");
+		printf("è¿æ¥æ•°æ®åº“å¤±è´¥!\n");
 		free(ms.EntityName);
 		free(ms.ExMsg);
 	}
-	SQLFreeHandle(SQL_HANDLE_DBC, hdbc);//ÊÍ·ÅÁ¬½Ó¾ä±ú 
-	SQLFreeHandle(SQL_HANDLE_ENV, henv);//ÊÍ·Å»·¾³¾ä±ú
+	SQLFreeHandle(SQL_HANDLE_DBC, hdbc);//é‡Šæ”¾è¿æ¥å¥æŸ„ 
+	SQLFreeHandle(SQL_HANDLE_ENV, henv);//é‡Šæ”¾ç¯å¢ƒå¥æŸ„
 
 }
 #endif
@@ -143,9 +143,9 @@ void workertianjiashuju(Message ms)
 	msg1.EntityLength = 0x00;
 	//msg1.Passenger = 0x44;
 	msg1.frameLength = 0000;
-	msg1.Ver = '0';//³õÊ¼»¯£»
-	msg1.Time = 0;//³õÊ¼»¯£»
-	memcpy(msg1.AK,a,32);//³õÊ¼»¯£»
+	msg1.Ver = '0';//åˆå§‹åŒ–ï¼›
+	msg1.Time = 0;//åˆå§‹åŒ–ï¼›
+	memcpy(msg1.AK,a,32);//åˆå§‹åŒ–ï¼›
 	msg1.EntityName = "0000";
 	msg1.ExMsg="0000";
 	//memcpy(msg1.AK, a, strlen(a) + 1);
