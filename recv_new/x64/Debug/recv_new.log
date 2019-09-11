@@ -1,0 +1,6 @@
+﻿  main.cpp
+d:\vsworkspace\recv_new\recv_new\main.cpp(158): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+d:\vsworkspace\recv_new\recv_new\main.cpp(160): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+d:\vsworkspace\recv_new\recv_new\main.cpp(162): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+d:\vsworkspace\recv_new\recv_new\main.cpp(238): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  recv_new.vcxproj -> D:\VSworkspace\recv_new\x64\Debug\recv_new.exe
