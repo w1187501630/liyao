@@ -13,7 +13,7 @@
 #pragma comment(lib, "wsock32")
 
 
-#define num_subthread 2
+#define num_subthread 1
 #define num_sendthread 1
 
 using namespace std;
@@ -233,7 +233,7 @@ int RingBuff::pop_data(int dataout_length, char *addrout)
 	}
 }
 
-unsigned char* str2hex(char *str) {//×Ö´®×ª»»º¯Êı ×¢ÊÍ1
+unsigned char* str2hex(char *str) {//å­—ä¸²è½¬æ¢å‡½æ•° æ³¨é‡Š1
 	unsigned char *ret = NULL;
 	int str_len = strlen(str);
 	int i = 0;
@@ -245,7 +245,7 @@ unsigned char* str2hex(char *str) {//×Ö´®×ª»»º¯Êı ×¢ÊÍ1
 	return ret;
 }
 
-char *padding_buf(char *buf, int size, int *final_size) {//paddingËã·¨ ×¢ÊÍ2
+char *padding_buf(char *buf, int size, int *final_size) {//paddingç®—æ³• æ³¨é‡Š2
 	char *ret = NULL;
 	int pidding_size = AES_BLOCK_SIZE - (size % AES_BLOCK_SIZE);
 	int i;
@@ -275,7 +275,7 @@ void encrpyt_buf(const unsigned char *raw_buf, unsigned char **encrpy_buf, int l
 	AES_KEY aes;
 	unsigned char *key = str2hex(key0);
 	unsigned char *iv = str2hex(vi);
-	AES_set_encrypt_key(key, 128, &aes);//º¯Êı½Ó¿Ú ×¢ÊÍ3
+	AES_set_encrypt_key(key, 128, &aes);//å‡½æ•°æ¥å£ æ³¨é‡Š3
 	AES_cbc_encrypt(raw_buf, *encrpy_buf, len, &aes, iv, AES_ENCRYPT);
 	free(key);
 	free(iv);
@@ -298,28 +298,28 @@ SOCKET create_socket()
 	WORD version = MAKEWORD(2, 0);
 	ret = WSAStartup(version, &wsadata);
 
-	//·şÎñÆ÷¶Ë¿Ú´´½¨
+	//æœåŠ¡å™¨ç«¯å£åˆ›å»º
 	SOCKET m_hServerSocket;
 	m_hServerSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (INVALID_SOCKET == m_hServerSocket)
 	{
-		cout << "·şÎñÆ÷socket´´½¨Ê§°Ü!" << endl;
+		cout << "æœåŠ¡å™¨socketåˆ›å»ºå¤±è´¥!" << endl;
 	}
 	else
 	{
-		cout << "·şÎñÆ÷socket´´½¨³É¹¦" << endl;
+		cout << "æœåŠ¡å™¨socketåˆ›å»ºæˆåŠŸ" << endl;
 	}
 
-	//·şÎñÆ÷¶Ë¿Ú°ó¶¨
+	//æœåŠ¡å™¨ç«¯å£ç»‘å®š
 	SOCKADDR_IN m_addr;
 	m_addr.sin_family = AF_INET;
 	m_addr.sin_addr.S_un.S_addr = htonl(INADDR_ANY);
 	m_addr.sin_port = htons(8042);
 	ret = bind(m_hServerSocket, (LPSOCKADDR)&m_addr, sizeof(m_addr));
 
-	//·şÎñÆ÷¶Ë¿Ú¿ªÊ¼¼àÌı
-	ret = listen(m_hServerSocket, 20);//µÚ¶ş¸ö²ÎÊıÖ¸¶¨×î´óÉêÇëµÄÁ¬½ÓÊı
-	//Ã¿µ±ÓĞÒ»¸ö¿Í»§¶ËÁ¬½ÓÉêÇë£¬Ôò·şÎñÆ÷¶Ë´´½¨Ò»¸öÏß³Ì¶ÔÆä½øĞĞ´¦Àí,Ä£ÄâÊı¾İ¿â·şÎñÆ÷µÄ´¦Àí·½Ê½
+	//æœåŠ¡å™¨ç«¯å£å¼€å§‹ç›‘å¬
+	ret = listen(m_hServerSocket, 20);//ç¬¬äºŒä¸ªå‚æ•°æŒ‡å®šæœ€å¤§ç”³è¯·çš„è¿æ¥æ•°
+	//æ¯å½“æœ‰ä¸€ä¸ªå®¢æˆ·ç«¯è¿æ¥ç”³è¯·ï¼Œåˆ™æœåŠ¡å™¨ç«¯åˆ›å»ºä¸€ä¸ªçº¿ç¨‹å¯¹å…¶è¿›è¡Œå¤„ç†,æ¨¡æ‹Ÿæ•°æ®åº“æœåŠ¡å™¨çš„å¤„ç†æ–¹å¼
 	SOCKET com_Sock;
 	SOCKADDR_IN clntaddr;
 	int clnlen = sizeof(clntaddr);
@@ -474,17 +474,17 @@ unsigned int _stdcall subcontract(LPVOID lpParam)
 		memcpy(msg2.ExMsg, recv_msg + 72 + (int)msg2.EntityLength, msg2.ExMsgLength);
 		msg2.ExMsg[msg2.ExMsgLength] = '\0';
 
-		cout << "Ö¡±êÊ¶: ";
+		cout << "å¸§æ ‡è¯†: ";
 		for (int i = 0; i < 5; i++)
 			printf("%c", msg2.frameID[i]);
-		cout << "\tÖ¡³¤:" << msg2.frameLength << "\t\t³§ÉÌ:" << msg2.ManuName << "\tĞ­Òé°æ±¾:" << msg2.Ver << endl;
+		cout << "\tå¸§é•¿:" << msg2.frameLength << "\t\tå‚å•†:" << msg2.ManuName << "\tåè®®ç‰ˆæœ¬:" << msg2.Ver << endl;
 		cout << "AK:" << msg2.AK;
-		cout << "\t·şÎñID:" << msg2.ServiceID << "\tÖÕ¶Ë±êÊ¶³¤¶È:" << (int)(msg2.EntityLength) << "\tÖÕ¶ËÃû:" << msg2.EntityName;
+		cout << "\tæœåŠ¡ID:" << msg2.ServiceID << "\tç»ˆç«¯æ ‡è¯†é•¿åº¦:" << (int)(msg2.EntityLength) << "\tç»ˆç«¯å:" << msg2.EntityName;
 
-		cout << "\n¾­¶È:" << (float)(msg2.Longitude) << "\tÎ³¶È:" << (float)msg2.Latitude << "\t\t×ø±êÀàĞÍ:" << msg2.Coordinate[0]
-			<< "\tËÙ¶È:" << (float)(msg2.Velocity) << "\t\t·½Ïò:" << msg2.Direction[0] << endl;
-		cout << "Ê±¼ä:" << msg2.Time << "\t\t³ÇÊĞ±àºÅ:" << msg2.CityID << "\tÔØ¿Í:" << (int)msg2.Passenger;
-		cout << "\t\tÀ©Õ¹³¤¶È:" << msg2.ExMsgLength << "\tÀ©Õ¹ĞÅÏ¢:" << msg2.ExMsg << endl << endl;
+		cout << "\nç»åº¦:" << (float)(msg2.Longitude) << "\tçº¬åº¦:" << (float)msg2.Latitude << "\t\tåæ ‡ç±»å‹:" << msg2.Coordinate[0]
+			<< "\té€Ÿåº¦:" << (float)(msg2.Velocity) << "\t\tæ–¹å‘:" << msg2.Direction[0] << endl;
+		cout << "æ—¶é—´:" << msg2.Time << "\t\tåŸå¸‚ç¼–å·:" << msg2.CityID << "\tè½½å®¢:" << (int)msg2.Passenger;
+		cout << "\t\tæ‰©å±•é•¿åº¦:" << msg2.ExMsgLength << "\tæ‰©å±•ä¿¡æ¯:" << msg2.ExMsg << endl << endl;
 		workertianjiashuju(msg2);
 
 		ReMsg.EntityLength = msg2.EntityLength;
